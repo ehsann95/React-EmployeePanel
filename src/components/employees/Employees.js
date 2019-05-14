@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { MDBIcon } from 'mdbreact';
 
 class Employees extends React.Component {
 	render() {
@@ -50,7 +51,13 @@ class Employees extends React.Component {
 				</div>
 			);
 		} else {
-			return <h1>Loading...</h1>;
+			return (
+				<div className="row mb-4">
+					<div className="col-6 " />
+					<MDBIcon icon="spinner" spin size="3x" fixed />
+					<span className="sr-only">Loading...</span>
+				</div>
+			);
 		}
 	}
 }

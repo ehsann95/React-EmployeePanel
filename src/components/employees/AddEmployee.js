@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 
 class AddEmployee extends Component {
 	state = {
@@ -36,64 +37,74 @@ class AddEmployee extends Component {
 					</div>
 				</div>
 
-				<div className="card">
-					<div className="card-header">Add Client</div>
-					<div className="card-body">
-						<form onSubmit={this.onSubmit}>
-							<div className="form-group">
-								<label htmlFor="firstName">First Name</label>
-								<input
-									type="text"
-									className="form-control"
-									name="firstName"
-									minLength="2"
-									required
-									onChange={this.onChange}
-									value={this.state.firstName}
-								/>
-							</div>
-
-							<div className="form-group">
-								<label htmlFor="lastName">Last Name</label>
-								<input
-									type="text"
-									className="form-control"
-									name="lastName"
-									minLength="2"
-									required
-									onChange={this.onChange}
-									value={this.state.lastName}
-								/>
-							</div>
-
-							<div className="form-group">
-								<label htmlFor="email">Email</label>
-								<input
-									type="email"
-									className="form-control"
-									name="email"
-									onChange={this.onChange}
-									value={this.state.email}
-								/>
-							</div>
-
-							<div className="form-group">
-								<label htmlFor="phone">Phone</label>
-								<input
-									type="text"
-									className="form-control"
-									name="phone"
-									minLength="10"
-									required
-									onChange={this.onChange}
-									value={this.state.phone}
-								/>
-							</div>
-
-							<input type="submit" value="Submit" className="btn btn-primary btn-block" />
-						</form>
-					</div>
-				</div>
+				<MDBContainer>
+					<MDBRow>
+						<MDBCol md="12">
+							<MDBCard>
+								<MDBCardBody>
+									<form onSubmit={this.onSubmit}>
+										<p className="h4 text-center py-4">Add Employee</p>
+										<div className="grey-text">
+											<MDBInput
+												label="Your First Name"
+												icon="user"
+												group
+												type="text"
+												name="firstName"
+												validate
+												error="wrong"
+												success="right"
+												onChange={this.onChange}
+												value={this.state.firstName}
+											/>
+											<MDBInput
+												label="Your Last Name"
+												icon="user"
+												group
+												type="text"
+												name="lastName"
+												validate
+												error="wrong"
+												success="right"
+												onChange={this.onChange}
+												value={this.state.lastName}
+											/>
+											<MDBInput
+												label="Your Email"
+												icon="envelope"
+												group
+												type="email"
+												name="email"
+												validate
+												error="wrong"
+												success="right"
+												onChange={this.onChange}
+												value={this.state.email}
+											/>
+											<MDBInput
+												label="Your Phone"
+												icon="phone"
+												group
+												type="text"
+												name="phone"
+												validate
+												error="wrong"
+												success="right"
+												onChange={this.onChange}
+												value={this.state.phone}
+											/>
+										</div>
+										<div className="text-center py-4 mt-3">
+											<MDBBtn color="cyan" className="btn-block" type="submit">
+												Submit
+											</MDBBtn>
+										</div>
+									</form>
+								</MDBCardBody>
+							</MDBCard>
+						</MDBCol>
+					</MDBRow>
+				</MDBContainer>
 			</div>
 		);
 	}

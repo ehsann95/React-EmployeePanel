@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBIcon } from 'mdbreact';
 
 class EditEmployee extends Component {
 	constructor(props) {
@@ -47,68 +48,99 @@ class EditEmployee extends Component {
 						</div>
 					</div>
 
-					<div className="card">
-						<div className="card-header">Edit Employee</div>
-						<div className="card-body">
-							<form onSubmit={this.onSubmit}>
-								<div className="form-group">
-									<label htmlFor="firstName">First Name</label>
-									<input
-										type="text"
-										className="form-control"
-										name="firstName"
-										minLength="2"
-										required
-										ref={this.firstNameInput}
-										defaultValue={employee.firstName}
-									/>
-								</div>
+					<MDBContainer>
+						<MDBRow>
+							<MDBCol md="12">
+								<MDBCard>
+									<MDBCardBody>
+										<form onSubmit={this.onSubmit}>
+											<p className="h4 text-center py-4">Edit Employee</p>
+											<label
+												htmlFor="defaultFormCardFirstNameEx"
+												className="grey-text font-weight-light"
+											>
+												Your Firstname
+											</label>
+											<input
+												type="text"
+												id="defaultFormCardLastNameEx"
+												className="form-control"
+												name="firstName"
+												minLength="2"
+												required
+												ref={this.firstNameInput}
+												defaultValue={employee.firstName}
+											/>
+											<br />
+											<label
+												htmlFor="defaultFormCardLastNameEx"
+												className="grey-text font-weight-light"
+											>
+												Your Lastname
+											</label>
+											<input
+												type="text"
+												id="defaultFormCardFirstNameEx"
+												className="form-control"
+												name="lastName"
+												minLength="2"
+												required
+												ref={this.lastNameInput}
+												defaultValue={employee.lastName}
+											/>
+											<br />
+											<label
+												htmlFor="defaultFormCardEmailEx"
+												className="grey-text font-weight-light"
+											>
+												Your Email
+											</label>
+											<input
+												type="email"
+												id="defaultFormCardEmailEx"
+												className="form-control"
+												name="email"
+												ref={this.emailInput}
+												defaultValue={employee.email}
+											/>
 
-								<div className="form-group">
-									<label htmlFor="lastName">Last Name</label>
-									<input
-										type="text"
-										className="form-control"
-										name="lastName"
-										minLength="2"
-										required
-										ref={this.lastNameInput}
-										defaultValue={employee.lastName}
-									/>
-								</div>
-
-								<div className="form-group">
-									<label htmlFor="email">Email</label>
-									<input
-										type="email"
-										className="form-control"
-										name="email"
-										ref={this.emailInput}
-										defaultValue={employee.email}
-									/>
-								</div>
-
-								<div className="form-group">
-									<label htmlFor="phone">Phone</label>
-									<input
-										type="text"
-										className="form-control"
-										name="phone"
-										minLength="10"
-										required
-										ref={this.phoneInput}
-										defaultValue={employee.phone}
-									/>
-								</div>
-
-								<input type="submit" value="Submit" className="btn btn-primary btn-block" />
-							</form>
-						</div>
-					</div>
+											<br />
+											<label
+												htmlFor="defaultFormCardPhoneEx"
+												className="grey-text font-weight-light"
+											>
+												Your Phone
+											</label>
+											<input
+												type="phone"
+												id="defaultFormCardPhoneEx"
+												className="form-control"
+												name="phone"
+												ref={this.phoneInput}
+												defaultValue={employee.phone}
+											/>
+											<div className="text-center py-4 mt-3">
+												<MDBBtn className="btn btn-outline-purple btn-block" type="submit">
+													Submit
+													<MDBIcon far icon="paper-plane" className="ml-2" />
+												</MDBBtn>
+											</div>
+										</form>
+									</MDBCardBody>
+								</MDBCard>
+							</MDBCol>
+						</MDBRow>
+					</MDBContainer>
 				</div>
 			);
 		} else {
-			return <h1>Loading...</h1>;
+			return (
+				<div className="row mb-4">
+					<div className="col-6 " />
+					<MDBIcon icon="spinner" spin size="3x" fixed />
+					<span className="sr-only">Loading...</span>
+				</div>
+			);
 		}
 	}
 }
